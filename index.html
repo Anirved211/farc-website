@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARC - Home</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Menu Bar -->
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">FARC</div>
+        <ul class="navbar-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="latest.html">Latest</a></li>
+            <li><a href="competitions.html">Competitions</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+        </ul>
+    </nav>
+
+    <!-- Scrolling Gallery -->
+    <section class="gallery">
+        <div class="gallery-container">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\download (1).jpg" alt="Gallery Image 1">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\download (2).jpg" alt="Gallery Image 2">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\images (2).jpg" alt="Gallery Image 3">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\download.jpg" alt="Gallery Image 4">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\images (1).jpg" alt="Gallery Image 5">
+            <img src="C:\Users\91798\OneDrive - National Institute of Technology Karnataka, Surathkal\Desktop\farc website\farc\images\images.jpg" alt="Gallery Image 6">
+ 
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <!-- SIG Cards -->
+<section class="sig-cards">
+    <div class="card">
+        <h2>Robo SIG</h2>
+        <p>Welcome to the Robo SIG division. Stay tuned for exciting projects!</p>
+        <a href="robo-sig.html" class="card-link">Learn More</a>
+    </div>
+    <div class="card">
+        <h2>Aero SIG</h2>
+        <p>Welcome to the Aero SIG division. Stay tuned for exciting projects!</p>
+        <a href="aero-sig.html" class="card-link">Learn More</a>
+    </div>
+</section>
+
+
+
+    <!-- Chatbot Placeholder -->
+    <section class="chatbot">
+        <h3>Need Help? Chat with us!</h3>
+        <div class="chatbot-placeholder">
+            <!-- Future: Integrate AI Chatbot here -->
+            <p>Chatbot will be here...</p>
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Array of all image file names in the images/ folder
+            const allImages = [
+                'download (1).jpg',
+                'download (2).jpg',
+                'images (2).jpg',
+                'download.jpg',
+                'images (1).jpg',
+                'images.jpg',
+                // Add more image file names here as needed
+            ];
+    
+            /**
+             * Function to shuffle an array using the Fisher-Yates algorithm
+             * @param {Array} array - The array to shuffle
+             * @returns {Array} - The shuffled array
+             */
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+    
+            /**
+             * Function to select n unique random elements from an array
+             * @param {Array} array - The source array
+             * @param {number} n - Number of elements to select
+             * @returns {Array} - Array of n unique random elements
+             */
+            function getRandomElements(array, n) {
+                if (n > array.length) {
+                    console.error('Requested more elements than available in the array.');
+                    return [];
+                }
+                const shuffled = shuffle(array.slice());
+                return shuffled.slice(0, n);
+            }
+    
+            // Select 6 unique random images
+            const selectedImages = getRandomElements(allImages, 6);
+    
+            // Assign selected images to the img elements
+            selectedImages.forEach((imgSrc, index) => {
+                const imgElement = document.getElementById(`gallery-img-${index + 1}`);
+                if (imgElement) {
+                    imgElement.src = `images/${imgSrc}`;
+                    imgElement.alt = `Gallery Image ${index + 1}`;
+                }
+            });
+        });
+    </script>
+    
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
